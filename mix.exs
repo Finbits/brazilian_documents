@@ -5,7 +5,7 @@ defmodule BrazilianDocuments.MixProject do
     [
       app: :brazilian_documents,
       version: "0.1.0",
-      elixir: "~> 1.6",
+      elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: "Validate, format and valid brazilian CPFs and CNPJs",
