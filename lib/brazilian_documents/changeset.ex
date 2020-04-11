@@ -16,8 +16,10 @@ if Code.ensure_loaded?(Ecto.Changeset) do
         validate_cpf(changeset, :cpf)
 
     """
-    @spec validate_cpf(changeset :: Ecto.Changeset.t(), field ::  atom(), opts :: Keyword.t()) :: Ecto.Changeset.t()
-    def validate_cpf(%Ecto.Changeset{} = changeset, field, opts \\ []) when is_atom(field) and is_list(opts) do
+    @spec validate_cpf(changeset :: Ecto.Changeset.t(), field :: atom(), opts :: Keyword.t()) ::
+            Ecto.Changeset.t()
+    def validate_cpf(%Ecto.Changeset{} = changeset, field, opts \\ [])
+        when is_atom(field) and is_list(opts) do
       Ecto.Changeset.validate_change(changeset, field, fn ^field, value ->
         if BrazilianDocuments.valid_cpf?(value) do
           []
@@ -39,8 +41,10 @@ if Code.ensure_loaded?(Ecto.Changeset) do
         validate_cnpj(changeset, :cnpj)
 
     """
-    @spec validate_cnpj(changeset :: Ecto.Changeset.t(), field ::  atom(), opts :: Keyword.t()) :: Ecto.Changeset.t()
-    def validate_cnpj(%Ecto.Changeset{} = changeset, field, opts \\ []) when is_atom(field) and is_list(opts) do
+    @spec validate_cnpj(changeset :: Ecto.Changeset.t(), field :: atom(), opts :: Keyword.t()) ::
+            Ecto.Changeset.t()
+    def validate_cnpj(%Ecto.Changeset{} = changeset, field, opts \\ [])
+        when is_atom(field) and is_list(opts) do
       Ecto.Changeset.validate_change(changeset, field, fn ^field, value ->
         if BrazilianDocuments.valid_cnpj?(value) do
           []
