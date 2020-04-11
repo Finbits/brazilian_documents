@@ -1,5 +1,7 @@
 # Brazilian Documents
 
+![CI](https://github.com/thiamsantos/brazilian_documents/workflows/CI/badge.svg?branch=master)
+
 Validate, format and valid brazilian CPFs and CNPJs.
 
 ## Installation
