@@ -37,7 +37,7 @@ BrazilianDocuments.format_cnpj(cnpj)
 
 ### Ecto Integration
 
-```
+```elixir
 import BrazilianDocuments.Changeset
 
 def changeset(target \\ %__MODULE__{}, attrs) do
