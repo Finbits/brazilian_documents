@@ -24,16 +24,15 @@ defmodule BrazilianDocuments.MixProject do
 
   defp package do
     [
-      maintainers: ["Thiago Santos"],
       licenses: ["Apache 2.0"],
-      links: %{"GitHub" => "https://github.com/thiamsantos/brazilian_documents"}
+      links: %{"GitHub" => "https://github.com/brainn-co/brazilian_documents"}
     ]
   end
 
   defp docs do
     [
       main: "BrazilianDocuments",
-      source_url: "https://github.com/thiamsantos/brazilian_documents"
+      source_url: "https://github.com/brainn-co/brazilian_documents"
     ]
   end
 

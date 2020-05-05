@@ -1,6 +1,6 @@
 # Brazilian Documents
 
-![CI](https://github.com/thiamsantos/brazilian_documents/workflows/CI/badge.svg?branch=master)
+![CI](https://github.com/brainn-co/brazilian_documents/workflows/CI/badge.svg?branch=master)
 
 Validate, format and valid brazilian CPFs and CNPJs.
 
@@ -51,4 +51,4 @@ end
 
 ## License
 
-[Apache License, Version 2.0](LICENSE) © [Thiago Santos](https://github.com/thiamsantos)
+[Apache License, Version 2.0](LICENSE) © [brainn.co](https://github.com/brainn-co)
