@@ -11,7 +11,7 @@ The package can be installed by adding `brazilian_documents` to your list of dep
 ```elixir
 def deps do
   [
-    {:brazilian_documents, "~> 0.2.0"}
+    {:brazilian_documents, "~> 0.2.1"}
   ]
 end
 ```
