@@ -39,7 +39,7 @@ defmodule BrazilianDocuments.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, "~> 0.21.3", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.25.2", only: :dev, runtime: false},
       {:ecto, "~> 3.0", optional: true}
     ]
   end
