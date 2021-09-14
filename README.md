@@ -49,6 +49,17 @@ def changeset(target \\ %__MODULE__{}, attrs) do
 end
 ```
 
+You can use the type modules in your schemas
+
+```elixir
+alias BrazilianDocuments.Types.{CNPJ, CPF}
+
+schema "table" do
+  field :cpf, CPF
+  field :cnpj, CNPJ
+end
+```
+
 ## License
 
 [Apache License, Version 2.0](LICENSE) © [brainn.co](https://github.com/brainnco)

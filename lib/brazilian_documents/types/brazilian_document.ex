@@ -1,4 +1,7 @@
 defmodule BrazilianDocuments.Types.BrazilianDocument do
+  @moduledoc """
+  A polymorphic `Ecto.Type` for brazilian documents.
+  """
   use Ecto.Type
 
   import BrazilianDocuments, only: [valid_cnpj?: 1, valid_cpf?: 1]

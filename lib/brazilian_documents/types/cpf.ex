@@ -1,4 +1,7 @@
 defmodule BrazilianDocuments.Types.CPF do
+  @moduledoc """
+  An `Ecto.Type` for CPF.
+  """
   use Ecto.Type
 
   defstruct [:number]

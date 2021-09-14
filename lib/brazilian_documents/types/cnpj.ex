@@ -1,4 +1,7 @@
 defmodule BrazilianDocuments.Types.CNPJ do
+  @moduledoc """
+  An `Ecto.Type` for CNPJ.
+  """
   use Ecto.Type
 
   defstruct [:number]
