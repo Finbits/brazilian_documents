@@ -4,7 +4,7 @@ defmodule BrazilianDocuments.MixProject do
   def project do
     [
       app: :brazilian_documents,
-      version: "0.2.1",
+      version: "0.3.0",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -39,7 +39,7 @@ defmodule BrazilianDocuments.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, "~> 0.21.3", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.25.2", only: :dev, runtime: false},
       {:ecto, "~> 3.0", optional: true}
     ]
   end
