@@ -57,7 +57,7 @@ defmodule BrazilianDocuments do
       false
 
   """
-  @spec valid_cpf?(value :: String.t()) :: boolean()
+  @spec valid_cnpj?(value :: String.t()) :: boolean()
   def valid_cnpj?(value) when is_binary(value) do
     if Regex.match?(~r/^(\d{14}|\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2})$/, value) do
       numbers = to_numbers_list(value)
