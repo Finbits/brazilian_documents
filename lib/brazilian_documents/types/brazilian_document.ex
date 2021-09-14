@@ -58,8 +58,8 @@ if Code.ensure_loaded?(Ecto.Type) do
   end
 
   defimpl String.Chars, for: BrazilianDocuments.Types.BrazilianDocument do
-    def to_string(%{number: cnpj_number}) when is_binary(cnpj_number) do
-      cnpj_number
+    def to_string(%{number: number}) when is_binary(number) do
+      number
     end
   end
 end
