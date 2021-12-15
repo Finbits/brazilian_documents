@@ -17,8 +17,8 @@ jobs:
             otp: "20.3.8.26"
     runs-on: ubuntu-16.04
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-elixir@v1.0.0
+      - uses: actions/checkout@v2
+      - uses: erlef/setup-beam@v1
         with:
           otp-version: ${{ matrix.otp }}
           elixir-version: ${{ matrix.elixir }}
@@ -30,8 +30,8 @@ jobs:
     name: mix format (Elixir 1.9.4 OTP 22.3)
     runs-on: ubuntu-16.04
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-elixir@v1.0.0
+      - uses: actions/checkout@v2
+      - uses: erlef/setup-beam@v1
         with:
           otp-version: "22.3"
           elixir-version: "1.9.4"
