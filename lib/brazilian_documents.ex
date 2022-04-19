@@ -144,7 +144,6 @@ defmodule BrazilianDocuments do
       iex> BrazilianDocuments.valid_cpf?(cnpj)
       true
 
-
   """
   @spec generate_cpf :: String.t()
   def generate_cpf do
