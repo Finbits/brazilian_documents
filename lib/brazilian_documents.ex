@@ -169,6 +169,12 @@ defmodule BrazilianDocuments do
       iex> String.slice(cnpj, 8..11) 
       "0013"
 
+      iex> cnpj = BrazilianDocuments.generate_cnpj(subsidiary: 12345)
+      iex> BrazilianDocuments.valid_cnpj?(cnpj)
+      true
+      iex> String.slice(cnpj, 8..11) 
+      "1234"
+
       iex> cnpj = BrazilianDocuments.generate_cnpj(subsidiary: "13")
       iex> BrazilianDocuments.valid_cnpj?(cnpj)
       true
@@ -176,7 +182,9 @@ defmodule BrazilianDocuments do
       "0013"
 
   """
-  @spec generate_cnpj :: String.t()
+  @type cnpj_opts :: [subsidiary: String.t() | integer()]
+  @spec generate_cnpj(opts :: cnpj_opts) :: String.t()
+  @spec generate_cnpj() :: String.t()
   def generate_cnpj(opts \\ []) do
     inscription_number = random_numbers(8)
 
@@ -195,17 +203,14 @@ defmodule BrazilianDocuments do
 
   defp format_subsidiary(nil), do: random_numbers(4)
 
-  defp format_subsidiary(subsidiary) when is_binary(subsidiary) do
-    subsidiary |> String.pad_leading(4, "0") |> to_numbers_list() |> Enum.take(4)
+  defp format_subsidiary(subsidiary) when is_integer(subsidiary) do
+    subsidiary
+    |> to_string()
+    |> format_subsidiary()
   end
 
-  defp format_subsidiary(subsidiary) when is_integer(subsidiary) do
-    digits =
-      subsidiary
-      |> Integer.digits()
-      |> Enum.take(4)
-
-    for index <- -4..-1, do: Enum.at(digits, index, 0)
+  defp format_subsidiary(subsidiary) when is_binary(subsidiary) do
+    subsidiary |> String.pad_leading(4, "0") |> to_numbers_list() |> Enum.take(4)
   end
 
   defp random_numbers(amount) do
