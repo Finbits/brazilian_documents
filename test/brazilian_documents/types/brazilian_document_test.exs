@@ -2,6 +2,8 @@ defmodule BrazilianDocuments.Types.BrazilianDocumentTest do
   use ExUnit.Case, async: true
 
   alias BrazilianDocuments.Types.BrazilianDocument
+  alias BrazilianDocuments.Types.CNPJ
+  alias BrazilianDocuments.Types.CPF
 
   describe "cast/1" do
     test "cast a valid CNPJ as a BrazilianDocument" do
@@ -32,10 +34,18 @@ defmodule BrazilianDocuments.Types.BrazilianDocumentTest do
                {:ok, %BrazilianDocument{number: "98083335088", kind: :cpf}}
     end
 
-    test "cast a BrazilianDocument struct" do
-      cnpj = %BrazilianDocument{number: "90536710000123", kind: :cnpj}
+    test "cast a BrazilianDocument type structs" do
+      brazilian_document_cnpj = %BrazilianDocument{number: "90536710000123", kind: :cnpj}
+      cnpj = %CNPJ{number: "90536710000123"}
 
-      assert BrazilianDocument.cast(cnpj) == {:ok, cnpj}
+      brazilian_document_cpf = %BrazilianDocument{number: "47729076020", kind: :cpf}
+      cpf = %CPF{number: "47729076020"}
+
+      assert BrazilianDocument.cast(cnpj) == {:ok, brazilian_document_cnpj}
+      assert BrazilianDocument.cast(brazilian_document_cnpj) == {:ok, brazilian_document_cnpj}
+
+      assert BrazilianDocument.cast(cpf) == {:ok, brazilian_document_cpf}
+      assert BrazilianDocument.cast(brazilian_document_cpf) == {:ok, brazilian_document_cpf}
     end
 
     test "error for invalid brazilian document number" do
@@ -75,14 +85,18 @@ defmodule BrazilianDocuments.Types.BrazilianDocumentTest do
 
   describe "dump/1" do
     test "dumb a CNPJ BrazilianDocument struct" do
-      cnpj = %BrazilianDocument{number: "90536710000123", kind: :cnpj}
+      brazilian_document_cnpj = %BrazilianDocument{number: "90536710000123", kind: :cnpj}
+      brazilian_document_cpf = %BrazilianDocument{number: "98083335088", kind: :cpf}
+      cnpj = %CNPJ{number: "90536710000123"}
+      cpf = %CPF{number: "47729076020"}
+
+      assert BrazilianDocument.dump(brazilian_document_cnpj) ==
+               {:ok, brazilian_document_cnpj.number}
+
+      assert BrazilianDocument.dump(brazilian_document_cpf) ==
+               {:ok, brazilian_document_cpf.number}
 
       assert BrazilianDocument.dump(cnpj) == {:ok, cnpj.number}
-    end
-
-    test "dumb a CPF BrazilianDocument struct" do
-      cpf = %BrazilianDocument{number: "98083335088", kind: :cpf}
-
       assert BrazilianDocument.dump(cpf) == {:ok, cpf.number}
     end
 

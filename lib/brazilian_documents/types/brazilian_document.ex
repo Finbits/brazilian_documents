@@ -5,6 +5,9 @@ if Code.ensure_loaded?(Ecto.Type) do
     """
     use Ecto.Type
 
+    alias BrazilianDocuments.Types.CNPJ
+    alias BrazilianDocuments.Types.CPF
+
     import BrazilianDocuments, only: [valid_cnpj?: 1, valid_cpf?: 1]
 
     defstruct [:number, :kind]
@@ -21,15 +24,17 @@ if Code.ensure_loaded?(Ecto.Type) do
       end
     end
 
-    def cast(%__MODULE__{number: value}) when is_binary(value) do
-      cast(value)
-    end
+    def cast(%__MODULE__{number: value}), do: cast(value)
+    def cast(%CPF{number: value}), do: cast(value)
+    def cast(%CNPJ{number: value}), do: cast(value)
 
     def cast(_invalid), do: :error
 
     def load(value), do: cast(value)
 
     def dump(%__MODULE__{number: number}), do: {:ok, number}
+    def dump(%CPF{number: number}), do: {:ok, number}
+    def dump(%CNPJ{number: number}), do: {:ok, number}
 
     def dump(value) when is_binary(value) do
       case cast(value) do
