@@ -2,6 +2,8 @@ defmodule BrazilianDocuments.Types.BrazilianDocumentTest do
   use ExUnit.Case, async: true
 
   alias BrazilianDocuments.Types.BrazilianDocument
+  alias BrazilianDocuments.Types.CNPJ
+  alias BrazilianDocuments.Types.CPF
 
   describe "cast/1" do
     test "cast a valid CNPJ as a BrazilianDocument" do
@@ -32,10 +34,18 @@ defmodule BrazilianDocuments.Types.BrazilianDocumentTest do
                {:ok, %BrazilianDocument{number: "98083335088", kind: :cpf}}
     end
 
-    test "cast a BrazilianDocument struct" do
-      cnpj = %BrazilianDocument{number: "90536710000123", kind: :cnpj}
+    test "cast a BrazilianDocument type structs" do
+      cnpj_brazilian_document = %BrazilianDocument{number: "90536710000123", kind: :cnpj}
+      cnpj = %CNPJ{number: "90536710000123"}
 
-      assert BrazilianDocument.cast(cnpj) == {:ok, cnpj}
+      cpf_brazilian_document = %BrazilianDocument{number: "47729076020", kind: :cpf}
+      cpf = %CPF{number: "47729076020"}
+
+      assert BrazilianDocument.cast(cnpj) == {:ok, cnpj_brazilian_document}
+      assert BrazilianDocument.cast(cnpj_brazilian_document) == {:ok, cnpj_brazilian_document}
+
+      assert BrazilianDocument.cast(cpf) == {:ok, cpf_brazilian_document}
+      assert BrazilianDocument.cast(cpf_brazilian_document) == {:ok, cpf_brazilian_document}
     end
 
     test "error for invalid brazilian document number" do
