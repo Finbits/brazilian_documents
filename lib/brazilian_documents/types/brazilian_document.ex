@@ -33,6 +33,8 @@ if Code.ensure_loaded?(Ecto.Type) do
     def load(value), do: cast(value)
 
     def dump(%__MODULE__{number: number}), do: {:ok, number}
+    def dump(%CPF{number: number}), do: {:ok, number}
+    def dump(%CNPJ{number: number}), do: {:ok, number}
 
     def dump(value) when is_binary(value) do
       case cast(value) do
